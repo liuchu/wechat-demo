@@ -61,7 +61,7 @@ public class WechatMsgRouter {
 
     }
 
-    @PostMapping(value = "/wechat", consumes = MediaType.TEXT_XML_VALUE , produces = MediaType.TEXT_XML_VALUE)
+    @PostMapping(value = "/wechat", produces = MediaType.APPLICATION_XML_VALUE)
     public MsgXmlResp receiveMsg(@RequestBody MsgXmlReq msgXmlReq) {
 
         log.info("收到的消息：{}", msgXmlReq);

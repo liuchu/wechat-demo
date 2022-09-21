@@ -1,6 +1,7 @@
 package priv.liuchu.wechat.demo.route;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import lombok.Data;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -11,7 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * Time 16:08
  */
 @Data
-@XmlRootElement(name="xml")
+@JacksonXmlRootElement(localName = "xml")
 public class MsgXmlResp {
 
     @JacksonXmlProperty(localName = "ToUserName")
