@@ -72,6 +72,8 @@ public class WechatMsgRouter {
         resp.setMsgType("text");
         resp.setContent("收到：" + msgXmlReq.getMsgType());
 
+        log.info("返回的消息：{}", resp);
+
         return resp;
     }
 }
