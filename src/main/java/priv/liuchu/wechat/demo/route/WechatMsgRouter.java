@@ -1,13 +1,12 @@
 package priv.liuchu.wechat.demo.route;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
+import java.util.Date;
 
 /**
  * @author liuchu
@@ -18,7 +17,7 @@ import java.util.Arrays;
 @Slf4j
 public class WechatMsgRouter {
 
-    @GetMapping(value = "/wechat/verify")
+    @GetMapping(value = "/wechat")
     public String verify(@RequestParam("signature") String signature,
                          @RequestParam("timestamp") String timestamp,
                          @RequestParam("nonce") String nonce,
@@ -59,5 +58,19 @@ public class WechatMsgRouter {
             return "fail";
         }
 
+    }
+
+    @PostMapping(value = "/wechat")
+    public MsgXmlResp receiveMsg(@RequestBody MsgXmlReq msgXmlReq) {
+
+        log.info("收到的消息：{}", msgXmlReq);
+        MsgXmlResp resp = new MsgXmlResp();
+        resp.setToUserName(msgXmlReq.getFromUserName());
+        resp.setFromUserName(msgXmlReq.getToUserName());
+        resp.setCreateTime(String.valueOf(new Date().getTime()));
+        resp.setMsgType("text");
+        resp.setContent("收到：" + msgXmlReq.getMsgType());
+
+        return resp;
     }
 }
