@@ -1,6 +1,7 @@
 package priv.liuchu.wechat.demo.route;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.MessageDigest;
@@ -60,7 +61,7 @@ public class WechatMsgRouter {
 
     }
 
-    @PostMapping(value = "/wechat")
+    @PostMapping(value = "/wechat", consumes = MediaType.APPLICATION_XML_VALUE , produces = MediaType.APPLICATION_XML_VALUE)
     public MsgXmlResp receiveMsg(@RequestBody MsgXmlReq msgXmlReq) {
 
         log.info("收到的消息：{}", msgXmlReq);
