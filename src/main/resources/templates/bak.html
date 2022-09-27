@@ -10,34 +10,14 @@
         $(document).ready(function(){
             $("button").click(function () {
 
-                $.ajax(
-                    {
-                        url: "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4710e5f39c19f59a&redirect_uri=http://lc.imcbb.com&response_type=code&scope=snsapi_base&state=123#wechat_redirect",
-                        success:function(result){
-                            alert("成功");
-                            $("#result").html(result);
-                        },
-                        error: function (xhr) {
-                            alert("错误： " + xhr.status);
-                            $("#result").html(xhr.status);
-                        }
-                    });
+                window.location.replace("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4710e5f39c19f59a&redirect_uri=http://lc.imcbb.com&response_type=code&scope=snsapi_base&state=123#wechat_redirect");
 
-                /*$.get("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxd81e7c94e113cff6&redirect_uri=http://h5.bestpay.cn&response_type=code&scope=snsapi_base&state=123#wechat_redirect", function(data, status){
-                    // console.log(data)
-                    alert("数据: " + status);
-                    $("div").html(data);
-                }
-                );*/
             });
         });
     </script>
 
 </head>
 <body>
-<button>调用微信</button>
-<div>Result is : <label id="result"></label></div>
-<p >Code is: <label id="code"></label></p>
-<p >State is: <label id="state"></label></p>
+<button>点击跳转微信授权</button>
 </body>
 </html>
