@@ -18,7 +18,7 @@
             $("button").click(function () {
 
                 var redirectUrl = encodeURIComponent("http://lc.imcbb.com/jump");
-                var distUrl = encodeURIComponent(getParam('distUrl'));
+                var distUrl = getParam('distUrl');
 
                 window.location.replace("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4710e5f39c19f59a&redirect_uri="
                     + redirectUrl

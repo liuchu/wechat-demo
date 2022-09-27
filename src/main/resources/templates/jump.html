@@ -19,7 +19,7 @@
 
                 var code = getParam('code');
 
-                var url = decodeURIComponent(getParam('state'));
+                var url = getParam('state');
 
                 window.location.replace(url + "?code=" + code);
             });
