@@ -7,19 +7,28 @@
 
 
     <script>
+
+        function getParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substring(1).match(reg);
+            return unescape(r[2]);
+        }
+
         $(document).ready(function(){
-            $("button").click(function(data, status){
-                $.get("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxd81e7c94e113cff6&redirect_uri=http://47.101.172.237&response_type=code&scope=snsapi_base&state=123#wechat_redirect", function(){
-                    alert("数据: " + data + "\n状态: " + status);
-                });
-            });
+
+            var code = getParam('code');
+            $("#code").html(code);
+
+            var state = getParam('state');
+            $("#state").html(state);
         });
+
+
     </script>
 
 </head>
 <body>
-<button>调用微信</button>
-    <p>code: {{code}}</p>
-    <p>state: {{state}}</p>
+<p >Code is: <label id="code"></label></p>
+<p >State is: <label id="state"></label></p>
 </body>
 </html>

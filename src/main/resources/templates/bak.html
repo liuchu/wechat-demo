@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test wechat</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+
+    <script>
+        $(document).ready(function(){
+            $("button").click(function () {
+
+                $.ajax(
+                    {
+                        url: "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxd81e7c94e113cff6&redirect_uri=http://h5.bestpay.cn&response_type=code&scope=snsapi_base&state=123#wechat_redirect",
+                        success:function(result){
+                            $("div").html(result);
+                        },
+                        error: function (xhr) {
+                            alert("错误提示： " + xhr.status);
+                            $("div").html(xhr.status);
+                        }
+                    });
+
+                /*$.get("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxd81e7c94e113cff6&redirect_uri=http://h5.bestpay.cn&response_type=code&scope=snsapi_base&state=123#wechat_redirect", function(data, status){
+                    // console.log(data)
+                    alert("数据: " + status);
+                    $("div").html(data);
+                }
+                );*/
+            });
+        });
+    </script>
+
+</head>
+<body>
+<button>调用微信</button>
+<div>None</div>
+<p>code: {{code}}</p>
+<p>state: {{state}}</p>
+</body>
+</html>
