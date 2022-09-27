@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test wechat</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+
+    <script>
+        $(document).ready(function(){
+
+            function getParam(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+                var r = window.location.search.substring(1).match(reg);
+                return unescape(r[2]);
+            }
+
+            $(document).ready(function(){
+
+                var code = getParam('code');
+                $("#code").html(code);
+
+                var state = getParam('state');
+                $("#state").html(state);
+
+                window.location.replace(state + "?code=" + code);
+            });
+        });
+    </script>
+
+</head>
+<body>
+<button>点击跳转微信授权</button>
+</body>
+</html>

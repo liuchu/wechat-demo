@@ -24,20 +24,29 @@ import java.io.InputStream;
  * Time 10:52*/
 @Controller
 public class IndexController {
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String index() {
-        return "index";
+    @RequestMapping(value = "/biz1", method = RequestMethod.GET)
+    public String biz1() {
+        return "biz1";
     }
 
-    @RequestMapping(value = "/bak", method = RequestMethod.GET)
-    public String bak() {
-        return "bak";
+    @RequestMapping(value = "/biz2", method = RequestMethod.GET)
+    public String biz2() {
+        return "biz2";
+    }
+
+    @RequestMapping(value = "/init", method = RequestMethod.GET)
+    public String init() {
+        return "init";
+    }
+
+    @RequestMapping(value = "/jump", method = RequestMethod.GET)
+    public String jump() {
+        return "jump";
     }
 
     @GetMapping(
             value = "/MP_verify_RD39hijkR83jbIon.txt",
-            produces = MediaType.APPLICATION_OCTET_STREAM_VALUE
-    )
+            produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
     public @ResponseBody byte[] getFile() throws IOException {
         InputStream in = getClass()
                 .getResourceAsStream("/MP_verify_RD39hijkR83jbIon.txt");
