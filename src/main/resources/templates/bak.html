@@ -12,13 +12,14 @@
 
                 $.ajax(
                     {
-                        url: "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxd81e7c94e113cff6&redirect_uri=http://h5.bestpay.cn&response_type=code&scope=snsapi_base&state=123#wechat_redirect",
+                        url: "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4710e5f39c19f59a&redirect_uri=http://lc.imcbb.com&response_type=code&scope=snsapi_base&state=123#wechat_redirect",
                         success:function(result){
-                            $("div").html(result);
+                            alert("成功");
+                            $("#result").html(result);
                         },
                         error: function (xhr) {
-                            alert("错误提示： " + xhr.status);
-                            $("div").html(xhr.status);
+                            alert("错误： " + xhr.status);
+                            $("#result").html(xhr.status);
                         }
                     });
 
@@ -35,8 +36,8 @@
 </head>
 <body>
 <button>调用微信</button>
-<div>None</div>
-<p>code: {{code}}</p>
-<p>state: {{state}}</p>
+<div>Result is : <label id="result"></label></div>
+<p >Code is: <label id="code"></label></p>
+<p >State is: <label id="state"></label></p>
 </body>
 </html>
