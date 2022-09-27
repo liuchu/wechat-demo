@@ -1,8 +1,22 @@
 package priv.liuchu.wechat.demo.view;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ContentDisposition;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * @author liuchu
@@ -14,4 +28,20 @@ public class IndexController {
     public String index() {
         return "index";
     }
+
+    @RequestMapping(value = "/bak", method = RequestMethod.GET)
+    public String bak() {
+        return "bak";
+    }
+
+    @GetMapping(
+            value = "/MP_verify_RD39hijkR83jbIon.txt",
+            produces = MediaType.APPLICATION_OCTET_STREAM_VALUE
+    )
+    public @ResponseBody byte[] getFile() throws IOException {
+        InputStream in = getClass()
+                .getResourceAsStream("/MP_verify_RD39hijkR83jbIon.txt");
+        return IOUtils.toByteArray(in);
+    }
+
 }
