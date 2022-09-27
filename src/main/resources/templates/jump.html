@@ -18,12 +18,10 @@
             $(document).ready(function(){
 
                 var code = getParam('code');
-                $("#code").html(code);
 
-                var state = getParam('state');
-                $("#state").html(state);
+                var url = decodeURIComponent(getParam('state'));
 
-                window.location.replace(state + "?code=" + code);
+                window.location.replace(url + "?code=" + code);
             });
         });
     </script>
