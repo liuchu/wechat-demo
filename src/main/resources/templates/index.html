@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test wechat</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+
+    <script>
+        $(document).ready(function(){
+            $("button").click(function(data, status){
+                $.get("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxd81e7c94e113cff6&redirect_uri=http://47.101.172.237&response_type=code&scope=snsapi_base&state=123#wechat_redirect", function(){
+                    alert("数据: " + data + "\n状态: " + status);
+                });
+            });
+        });
+    </script>
+
+</head>
+<body>
+<button>调用微信</button>
+    <p>code: {{code}}</p>
+    <p>state: {{state}}</p>
+</body>
+</html>
